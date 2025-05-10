@@ -977,3 +977,39 @@ section.visible iframe {
   padding: 0 15px;
 }
 }
+@media (max-width: 768px) {
+  .nav-container {
+    display: none;
+  }
+}
+
+
+/*
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-toggle {
+  order: -1; /* Pushes it to the beginning (left) 
+
+.menu-toggle {
+  margin-right: auto;
+}
+
+nav {
+  background-color: white;
+}
+
+
+.nav-container {
+  background-color: white;
+}
+
+
+.nav-menu li a {
+  color: black;
+}
+*/
