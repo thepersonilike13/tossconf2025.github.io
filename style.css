@@ -1013,3 +1013,190 @@ nav {
   color: black;
 }
 */
+       .schedule-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+        }
+
+        section.visible .schedule-tabs {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tab-btn {
+            background: var(--light-blue);
+            border: none;
+            padding: 12px 25px;
+            margin: 0 10px;
+            margin-top: 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .schedule-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .schedule-day {
+            display: none;
+        }
+
+        .schedule-day.active {
+            display: block;
+        }
+
+        .timeline-item {
+            background: var(--light-green);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            position: relative;
+            border-left: 4px solid var(--primary-green);
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            cursor: pointer;
+        }
+
+        .timeline-item:nth-child(1) { transition-delay: 0.1s; }
+        .timeline-item:nth-child(2) { transition-delay: 0.2s; }
+        .timeline-item:nth-child(3) { transition-delay: 0.3s; }
+        .timeline-item:nth-child(4) { transition-delay: 0.4s; }
+
+        section.visible .timeline-item {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .timeline-item .time {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .event-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .event-link {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .gmeet-link {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .youtube-link {
+            background-color: #FF0000;
+            color: white;
+        }
+
+        .gmeet-link:hover,
+        .youtube-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Popup Styles */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .popup.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: scale(0.7);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .popup.show .popup-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .popup-close:hover {
+            transform: rotate(90deg);
+        }
+
+        @media (max-width: 600px) {
+            .schedule-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            .tab-btn {
+                margin: 5px 0;
+                width: 200px;
+            }
+            .event-links {
+                flex-direction: column;
+            }
+            .event-link {
+                width: 100%;
+                text-align: center;
+            }
+        }
