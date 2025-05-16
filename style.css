@@ -1013,7 +1013,43 @@ nav {
   color: black;
 }
 */
-       .schedule-tabs {
+
+
+/* Schedule Section fully */
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: white;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        #schedule {
+            background: white;
+            padding: 50px 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            color: var(--primary-blue);
+        }
+
+        .schedule-tabs {
             display: flex;
             justify-content: center;
             margin-bottom: 30px;
@@ -1155,13 +1191,14 @@ nav {
             background: white;
             padding: 30px;
             border-radius: 10px;
-            max-width: 500px;
+            max-width: 600px;
             width: 90%;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transform: scale(0.7);
             opacity: 0;
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
         }
 
         .popup.show .popup-content {
@@ -1183,6 +1220,40 @@ nav {
             transform: rotate(90deg);
         }
 
+        /* New Image Styles */
+        .popup-image {
+            max-width: 150px;
+            margin: 0 auto 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .popup-content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .popup-content-container {
+                flex-direction: row;
+                text-align: left;
+                gap: 20px;
+            }
+            .popup-text-content {
+                flex: 1;
+            }
+            .popup-image-container {
+                flex: 0 0 180px;
+            }
+        }
+
+        /* Day 2 content */
+        .day2 .timeline-item {
+            background: var(--light-green);
+            border-left: 4px solid var(--secondary-green);
+        }
+
         @media (max-width: 600px) {
             .schedule-tabs {
                 flex-direction: column;
@@ -1198,5 +1269,8 @@ nav {
             .event-link {
                 width: 100%;
                 text-align: center;
+            }
+            .popup-content-container {
+                flex-direction: column;
             }
         }

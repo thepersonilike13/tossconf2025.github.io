@@ -73,3 +73,86 @@ sections.forEach(section => {
 sectionObserver.observe(section);
 });
 });
+        // Tab switching functionality
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and days
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.schedule-day').forEach(day => day.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding day
+                button.classList.add('active');
+                document.querySelector(`.schedule-day.${button.dataset.day}`).classList.add('active');
+            });
+        });
+
+// Fixed Popup Script
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Tab Functionality
+    const tabBtns = document.querySelectorAll('.tab-btn');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons and content
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.schedule-day').forEach(day => day.classList.remove('active'));
+
+            // Add active class to clicked button and relevant content
+            this.classList.add('active');
+            const dayId = this.getAttribute('data-day');
+            document.querySelector(`.${dayId}`).classList.add('active');
+        });
+    });
+
+    // Toggle Navigation Menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-container')) {
+            navMenu.classList.remove('active');
+        }
+    });
+
+    // Popup Functionality
+    const timelineItems = document.querySelectorAll('.timeline-item');
+
+    timelineItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const title = item.getAttribute('data-title');
+            const time = item.querySelector('.time').textContent;
+            const description = item.getAttribute('data-description');
+            const imageSrc = item.getAttribute('data-image');
+
+            const popup = document.querySelector('.popup');
+            const popupTitle = popup.querySelector('#popup-title');
+            const popupTime = popup.querySelector('#popup-time');
+            const popupDescription = popup.querySelector('#popup-description');
+            const popupImage = popup.querySelector('#popup-image');
+
+            popupTitle.textContent = title;
+            popupTime.textContent = time;
+            popupDescription.textContent = description;
+            popupImage.src = imageSrc;
+            popup.classList.add('show');
+        });
+    });
+
+    // Close Popup
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('popup-close') || e.target.classList.contains('popup')) {
+            document.querySelector('.popup').classList.remove('show');
+        }
+    });
+});
